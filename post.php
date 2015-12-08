@@ -18,16 +18,29 @@
 require 'vendor/autoload.php';
 
 try {
-    if (!isset($_POST["card_token"])) {
-        print 'invalid request';
-        exit;
-    }
-
-    $card_token = $_POST["card_token"];
-
     $spike = new \Issei\Spike\Spike(trim(file_get_contents('./secret.key')));
 
-    $token = new \Issei\Spike\Model\Token($card_token);
+    $card_number = implode('', array($_POST['cc1'], $_POST['cc2'], $_POST['cc3'], $_POST['cc4']));
+    $month = $_POST['month'];
+    $year = $_POST['year'];
+    $cvc = $_POST['cvc'];
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+
+
+    $request = new \Issei\Spike\TokenRequest();
+    $request
+      ->setCardNumber($card_number)
+      ->setExpirationMonth($month)
+      ->setExpirationYear($year)
+      ->setHolderName($name)
+      ->setSecurityCode($cvc)
+      ->setCurrency('JPY')
+      ->setEmail($email)
+      ;
+
+    $token = $spike->requestToken($request);
+
 
     // 課金を作成
     $request = new \Issei\Spike\ChargeRequest();
