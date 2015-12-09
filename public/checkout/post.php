@@ -25,7 +25,7 @@ try {
 
     $card_token = $_POST["card_token"];
 
-    $spike = new \Issei\Spike\Spike(trim(file_get_contents('./secret.key')));
+    $spike = new \Issei\Spike\Spike(trim(file_get_contents('../../secret.key')));
 
     $token = new \Issei\Spike\Model\Token($card_token);
 

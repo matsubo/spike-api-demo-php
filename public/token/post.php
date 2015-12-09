@@ -17,7 +17,7 @@
 require '../../vendor/autoload.php';
 
 try {
-    $spike = new \Issei\Spike\Spike(trim(file_get_contents('../secret.key')));
+    $spike = new \Issei\Spike\Spike(trim(file_get_contents('../../secret.key')));
 
     $card_number = implode('', array($_POST['cc1'], $_POST['cc2'], $_POST['cc3'], $_POST['cc4']));
     $month = $_POST['month'];
