@@ -23,7 +23,7 @@ try {
 
     // capture
     $charge = $spike->getCharge($id);
-    $charge = $spike->refund($charge);
+    $charge = $spike->capture($charge);
 
     var_dump($charge);
 
