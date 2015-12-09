@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <title>Sample Page</title>
         <meta name="author" content="Yuki Matsukura">
+        <link rel="stylesheet" href="css/styles.css?v=1.0">
         <!--[if lt IE 9]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
@@ -17,29 +18,16 @@
 require '../../vendor/autoload.php';
 
 try {
-    $spike = new \Issei\Spike\Spike(trim(file_get_contents('../secret.key')));
+    if (!isset($_POST["card_token"])) {
+        print 'invalid request';
+        exit;
+    }
 
-    $card_number = implode('', array($_POST['cc1'], $_POST['cc2'], $_POST['cc3'], $_POST['cc4']));
-    $month = $_POST['month'];
-    $year = $_POST['year'];
-    $cvc = $_POST['cvc'];
-    $name = $_POST['name'];
-    $email = $_POST['email'];
+    $card_token = $_POST["card_token"];
 
+    $spike = new \Issei\Spike\Spike(trim(file_get_contents('./secret.key')));
 
-    $request = new \Issei\Spike\TokenRequest();
-    $request
-      ->setCardNumber($card_number)
-      ->setExpirationMonth($month)
-      ->setExpirationYear($year)
-      ->setHolderName($name)
-      ->setSecurityCode($cvc)
-      ->setCurrency('JPY')
-      ->setEmail($email)
-      ;
-
-    $token = $spike->requestToken($request);
-
+    $token = new \Issei\Spike\Model\Token($card_token);
 
     // 課金を作成
     $request = new \Issei\Spike\ChargeRequest();

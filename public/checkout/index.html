@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SPIKE Checkout demo</title>
+    <meta name="author" content="Yuki Matsukura">
+    <!-- Bootstrap -->
+    <link href="../components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body style="  padding-top: 50px; ">
+
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="http://matsu.teraren.com/spike-api-demo-php/">SPIKE API demo</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="starter-template">
+        <h1>SPIKE example</h1>
+
+        <h2>使い方</h2>
+        <ul>
+          <li>決済ボタンを押す</li>
+          <li>"4242424242424242"を入れる。その他は適当に。</li>
+          <li>このページに処理に戻ってきて、Javascriptにより、Formが自動的に次のページへ送信される。</li>
+          <li>レスポンスが表示される。</li>
+        </ul>
+
+
+        <h2>サンプル決済</h2>
+        <div class="text-center">
+
+          <form action="post.php" method="POST">
+
+            <input type="button" class="btn btn-success" id="customButton" value="決済する" >
+
+          </form>
+
+
+        </div>
+      </div>
+
+    </div><!-- /.container -->
+
+
+
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../components/bootstrap/dist/js/bootstrap.js"></script>
+
+
+
+    <script src="https://checkout.spike.cc/v1/checkout.js"></script>
+    <script>
+
+      // SPIKE Checkoutのインスタンスを生成する
+    var handler = SpikeCheckout.configure({
+    key: "pk_test_LjAfYRVg641gPI2BuVBXZPjS",
+    token: function(token) {
+      $('<input>')
+      .attr('type', 'hidden')
+      .attr('name', 'card_token')
+      .val(token.id)
+      .appendTo('form');
+      $('form').submit();
+    },
+    opened: function() {
+      // Window opened event
+    },
+    closed: function() {
+      // Window closed event
+    }
+    });
+
+
+    // カード情報を入力するオーバーレイを開く処理
+    document.getElementById("customButton").addEventListener("click", function(e) {
+      handler.open({
+        name: "オンラインショップ",
+        currency: "JPY",
+        email: "foo@example.com",
+      });
+      e.preventDefault();
+    });
+    </script>
+
+
+  </body>
+</html>
+
+
+
