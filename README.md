@@ -30,7 +30,7 @@ Sample configuration for nginx
 
 ```
 ...
-location ^~ //spike-api-demo-php/ {
+location ^~ /spike-api-demo-php/ {
   alias /Users/matsu/Documents/spike-api-demo-php/public/;
 
   location ~ \.php {
