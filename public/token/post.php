@@ -4,7 +4,6 @@
         <meta charset="utf-8">
         <title>Sample Page</title>
         <meta name="author" content="Yuki Matsukura">
-        <link rel="stylesheet" href="css/styles.css?v=1.0">
         <!--[if lt IE 9]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
@@ -15,10 +14,10 @@
 <pre>
 
 <?php
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 
 try {
-    $spike = new \Issei\Spike\Spike(trim(file_get_contents('./secret.key')));
+    $spike = new \Issei\Spike\Spike(trim(file_get_contents('../secret.key')));
 
     $card_number = implode('', array($_POST['cc1'], $_POST['cc2'], $_POST['cc3'], $_POST['cc4']));
     $month = $_POST['month'];

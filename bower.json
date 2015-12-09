@@ -1,6 +1,6 @@
 {
   "name": "bootstrap",
-  "version": "3.1.1",
+  "version": "3.3.6",
   "main": [
     "./dist/css/bootstrap.css",
     "./dist/js/bootstrap.js",
@@ -19,6 +19,7 @@
     "js/tests"
   ],
   "dependencies": {
-    "jquery": ">= 1.9.0"
+    "jquery": ">= 1.9.0",
+    "bootstrap": "~3.3.6"
   }
 }

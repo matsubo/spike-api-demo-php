@@ -1,4 +1,0 @@
-<Files secret.key>
-deny from all
-</Files>
-
