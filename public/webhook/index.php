@@ -41,8 +41,8 @@ $url = (($_SERVER["HTTPS"] == 'on') ? 'https' : 'http') . '://' . $_SERVER["SERV
 
 <ol>
   <li><code><?php print $url; ?></code>を<a href="https://spike.cc/dashboard/developer/webhook/urls" target="_blank">SPIKEのWebhook登録ページ</a>にて登録します。</li>
-  <li>テストのためにPINGボタンを押してテスト送信します</li>。
-  <li>このページをリロードすると、Webhookで受信し内容が以下に表示されます。</li>。
+  <li>テストのためにPINGボタンを押してテスト送信します。</li>
+  <li>このページをリロードすると、Webhookで受信し内容が以下に表示されます。</li>
 </ol>
 
 <h2>Webhookで受信した内容</h2>
