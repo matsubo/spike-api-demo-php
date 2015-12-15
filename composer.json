@@ -1,6 +1,7 @@
 {
   "require": {
-    "issei-m/spike-php":"dev-master"
+    "issei-m/spike-php":"dev-master",
+    "predis/predis": "dev-master"
   }
 }
 
