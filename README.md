@@ -12,7 +12,9 @@ Requirements
 ------------------
 - bower
 - PHP 5.3=<
+  - phpredis
 - composer
+- Redis
 
 
 Setup
