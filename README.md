@@ -6,12 +6,14 @@ Live demo
 ------------------
 
 - See
-  - http://matsu.teraren.com/spike-api-demo-php/
+  - [http://matsu.teraren.com/spike-api-demo-php/](http://matsu.teraren.com/spike-api-demo-php/)
+  - [https://matsu.teraren.com/spike-api-demo-php/](https://matsu.teraren.com/spike-api-demo-php/)
+
 
 Requirements
 ------------------
 - bower
-- PHP 5.3=<
+- PHP >=5.3, >=7
   - phpredis
 - composer
 - Redis
@@ -27,6 +29,13 @@ Setup
 % php composer.phar install
 % echo 'YOUR SECRET KEY' > secret.key
 ```
+
+
+Start server
+---
+
+
+1. nginx
 
 Sample configuration for nginx
 
@@ -47,3 +56,11 @@ location ^~ /spike-api-demo-php/ {
 ```
 
 
+2. PHP build in server
+
+
+```
+% cd public
+% php -S localhost:8000
+% open 'http://localhost:8000/'
+```
