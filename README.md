@@ -28,6 +28,7 @@ Setup
 % bower install
 % php composer.phar install
 % echo 'YOUR SECRET KEY' > secret.key
+% echo 'YOUR PUBLIC KEY' > public.key
 ```
 
 

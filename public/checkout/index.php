@@ -73,7 +73,7 @@
 
       // SPIKE Checkoutのインスタンスを生成する
     var handler = SpikeCheckout.configure({
-    key: "pk_test_LjAfYRVg641gPI2BuVBXZPjS",
+    key: "<?php print trim(file_get_contents(dirname(dirname(dirname(__FILE__))) . '/public.key')); ?>",
     token: function(token) {
       $('<input>')
       .attr('type', 'hidden')
